@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orphaned Charter — Print Edition</title>
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#555;
+      --paper:#fff;
+      --rule:#ddd;
+      --accent:#000;
+    }
+
+    /* Screen styles (nice enough to read) */
+    body{
+      margin:0;
+      background:#f4f4f0;
+      color:var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.6;
+    }
+    .wrap{
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    .paper{
+      background:var(--paper);
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 14px;
+      padding: 2.25rem 2.25rem 3rem;
+    }
+    .toolbar{
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom: 1rem;
+    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      border:1px solid #222;
+      color:#f4f4f0;
+      background:#222;
+      padding:.65rem 1rem;
+      border-radius: 10px;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    .btn.secondary{
+      background:transparent;
+      color:#222;
+    }
+    .note{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    h1,h2,h3{
+      font-family: "Times New Roman", Times, serif;
+      margin:0 0 .6rem 0;
+      line-height:1.15;
+    }
+    h1{
+      text-align:center;
+      font-size: 40px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-top: 1.25rem;
+    }
+    .subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-top:.25rem;
+      font-style:italic;
+    }
+    .rule{
+      border:none;
+      border-top:1px solid var(--rule);
+      margin: 1.25rem auto 1.5rem;
+      width: 70%;
+    }
+    .meta{
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .toc{
+      margin: 1.25rem 0 2rem;
+      padding: 0;
+      list-style:none;
+      border-top:1px solid var(--rule);
+      border-bottom:1px solid var(--rule);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .toc li{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.25rem 0;
+    }
+    .toc a{
+      color:#111;
+      text-decoration:none;
+    }
+    .toc span{
+      color:var(--muted);
+    }
+
+    section{
+      margin: 0 0 1.5rem;
+    }
+
+    .article-title{
+      margin-top: 2rem;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing:.05em;
+      text-align:center;
+    }
+
+    .clause{
+      margin: .5rem 0 0;
+    }
+
+    ol{
+      margin: .5rem 0 0;
+      padding-left: 1.35rem;
+    }
+    li{
+      margin-bottom: .45rem;
+    }
+
+    .closing{
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      font-style: italic;
+    }
+
+    .smallprint{
+      margin-top: 2rem;
+      color:var(--muted);
+      font-size:.9rem;
+      text-align:center;
+    }
+
+    /* PRINT STYLES: the whole point */
+    @media print{
+      @page{
+        size: letter;
+        margin: 0.85in 0.8in 0.9in 0.8in;
+      }
+      body{
+        background:#fff;
+      }
+      .wrap{
+        padding:0;
+        max-width:none;
+      }
+      .paper{
+        box-shadow:none;
+        border:none;
+        border-radius:0;
+        padding:0;
+      }
+      .toolbar{
+        display:none !important;
+      }
+
+      /* Page numbering */
+      body{
+        counter-reset: page;
+      }
+
+      /* Use page breaks intentionally */
+      .page-break{
+        break-before: page;
+        page-break-before: always;
+      }
+      h2{
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+      h3, p, ol, li{
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Footer running text (best-effort; varies by browser) */
+      .print-footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 10pt;
+        color: #666;
+      }
+      .print-footer .inner{
+        display:flex;
+        justify-content:space-between;
+        border-top:1px solid #ddd;
+        padding-top:.15in;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="toolbar">
+      <a class="btn" href="#" onclick="window.print(); return false;">Print / Save as PDF</a>
+      <a class="btn secondary" href="./index.html">Back to site</a>
+      <div class="note">Tip: in print dialog, set margins to “Default” and turn off headers/footers if you want it cleaner.</div>
+    </div>
+
+    <div class="paper">
+      <h1>ORPHANED CHARTER</h1>
+      <div class="subtitle">Declaration of Principles for a New Beginning</div>
+      <hr class="rule" />
+      <div class="meta">
+        Print Edition • Version 0.1 • Prepared for distribution and archiving
+      </div>
+
+      <ul class="toc">
+        <li><a href="#preamble">Preamble</a> <span>—</span></li>
+        <li><a href="#a1">Article I — The Foundation</a> <span>—</span></li>
+        <li><a href="#a2">Article II — Rights That Cannot Be Revoked</a> <span>—</span></li>
+        <li><a href="#a3">Article III — What We Owe Each Other</a> <span>—</span></li>
+        <li><a href="#a4">Article IV — The Planet Is a Stakeholder</a> <span>—</span></li>
+        <li><a href="#a5">Article V — Government as a Tool</a> <span>—</span></li>
+        <li><a href="#a6">Article VI — Democracy Is Not a Performance</a> <span>—</span></li>
+        <li><a href="#a7">Article VII — Memory Is Protection</a> <span>—</span></li>
+        <li><a href="#a8">Article VIII — Global Interdependence</a> <span>—</span></li>
+        <li><a href="#a9">Article IX — The Future Is Watching</a> <span>—</span></li>
+        <li><a href="#a10">Article X — The Whole Person</a> <span>—</span></li>
+        <li><a href="#a11">Article XI — Living Structure</a> <span>—</span></li>
+        <li><a href="#closing">Closing Statement</a> <span>—</span></li>
+      </ul>
+
+      <section id="preamble">
+        <h2 class="article-title">PREAMBLE</h2>
+        <p class="clause">We begin again.</p>
+        <p class="clause">Not from perfection, but from memory, vision, and necessity.</p>
+        <p class="clause">We, the people—scarred, aware, and resolute—establish this Constitution to anchor our shared future in justice, dignity, and balance. We pledge to protect what must endure, to adapt what must evolve, and to guard against every silence that once enabled collapse.</p>
+      </section>
+
+      <div class="page-break"></div>
+
+      <section id="a1">
+        <h2 class="article-title">ARTICLE I — THE FOUNDATION</h2>
+        <ol>
+          <li>This society is a democratic, secular, and ecological republic.</li>
+          <li>All power begins and ends with the people.</li>
+          <li>The dignity of the individual is inviolable. The health of the planet is non-negotiable.</li>
+        </ol>
+      </section>
+
+      <section id="a2">
+        <h2 class="article-title">ARTICLE II — RIGHTS THAT CANNOT BE REVOKED</h2>
+        <ol>
+          <li>Every person has the right to live free from fear, domination, and neglect.</li>
+          <li>Core freedoms—of thought, expression, movement, belief, and identity—are unassailable.</li>
+          <li>Each person has the right to participate in public life: to vote, to serve, and to dissent. These rights shall be universal and equal.</li>
+          <li>Privacy, bodily autonomy, and informed consent are not privileges. They are guarantees.</li>
+          <li>Non-derogable rights include, at minimum: the right to life, freedom from torture, slavery, and retroactive punishment. Further derogation shall be permitted only in accordance with law, necessity, and proportionality.</li>
+        </ol>
+      </section>
+
+      <section id="a3">
+        <h2 class="article-title">ARTICLE III — WHAT WE OWE EACH OTHER</h2>
+        <ol>
+          <li>Healthcare is a human right, not a commodity.</li>
+          <li>Education is a lifelong public good.</li>
+          <li>Work must be fair, safe, and valued.</li>
+          <li>Housing, food, clean water, and digital access form the floor beneath which no one shall fall.</li>
+          <li>These rights shall be progressively realized through legislation, subject to judicial review for reasonableness and non-discrimination.</li>
+          <li>Indigenous rights are living rights: to land, language, culture, and governance.</li>
+        </ol>
+      </section>
+
+      <section id="a4">
+        <h2 class="article-title">ARTICLE IV — THE PLANET IS A STAKEHOLDER</h2>
+        <ol>
+          <li>The natural world has standing.</li>
+          <li>Every generation has the right to inherit a livable climate.</li>
+          <li>Environmental harm is a breach of constitutional order.</li>
+        </ol>
+      </section>
+
+      <div class="page-break"></div>
+
+      <section id="a5">
+        <h2 class="article-title">ARTICLE V — GOVERNMENT AS A TOOL</h2>
+        <ol>
+          <li>Governance shall be transparent, accountable, and participatory.</li>
+          <li>Legislative power is bicameral, representative, and responsive to citizen proposals.</li>
+          <li>Executive power is limited by time, law, and public oversight.</li>
+          <li>Judicial power is independent, ethical, and bound to reason.</li>
+          <li>Judges may be removed for proven misconduct following independent investigation, due process, and supermajority confirmation by the legislature.</li>
+          <li>No emergency cancels the Constitution.</li>
+        </ol>
+      </section>
+
+      <section id="a6">
+        <h2 class="article-title">ARTICLE VI — DEMOCRACY IS NOT A PERFORMANCE</h2>
+        <ol>
+          <li>Voting is a right and a duty, beginning at age 16.</li>
+          <li>Elections are publicly funded. Private influence is prohibited.</li>
+          <li>Civic technologies must be open, secure, and auditable.</li>
+          <li>Citizens shall directly shape budgets and reforms.</li>
+        </ol>
+      </section>
+
+      <section id="a7">
+        <h2 class="article-title">ARTICLE VII — MEMORY IS PROTECTION</h2>
+        <ol>
+          <li>Whistleblowers and journalists are guardians of the public trust.</li>
+          <li>No party, faction, or ideology may arm itself against the people.</li>
+          <li>The military shall serve—and never rule.</li>
+        </ol>
+      </section>
+
+      <section id="a8">
+        <h2 class="article-title">ARTICLE VIII — GLOBAL INTERDEPENDENCE</h2>
+        <ol>
+          <li>We uphold international law, climate justice, and human rights.</li>
+          <li>Refugees shall be treated with dignity, and asylum is a right.</li>
+          <li>We practice peace through cooperation, not through conquest.</li>
+        </ol>
+      </section>
+
+      <div class="page-break"></div>
+
+      <section id="a9">
+        <h2 class="article-title">ARTICLE IX — THE FUTURE IS WATCHING</h2>
+        <ol>
+          <li>Data, algorithms, and emerging technologies must serve humanity, not replace or exploit it.</li>
+          <li>All persons own their genetic, biometric, and neural data as inalienable personal rights, protected from exploitation and misuse.</li>
+          <li>Technological power requires human oversight—ethical, democratic, and adaptive.</li>
+        </ol>
+      </section>
+
+      <section id="a10">
+        <h2 class="article-title">ARTICLE X — THE WHOLE PERSON</h2>
+        <ol>
+          <li>All identities, languages, cultures, and families are equal under law.</li>
+          <li>No belief shall be favored; all beliefs shall be respected.</li>
+          <li>Each person may live without being asked to justify their existence.</li>
+        </ol>
+      </section>
+
+      <section id="a11">
+        <h2 class="article-title">ARTICLE XI — LIVING STRUCTURE</h2>
+        <ol>
+          <li>Amendments altering foundational rights or the structure of government shall require a two-thirds legislative majority and a national referendum.</li>
+          <li>Amendments concerning procedural, technological, or administrative matters may be passed with a three-fifths legislative majority and a public notice period, subject to judicial review.</li>
+        </ol>
+      </section>
+
+      <section id="closing" class="closing">
+        <h2 class="article-title">CLOSING STATEMENT</h2>
+        <p>This is not a script. It is a compass.</p>
+        <p>It will not make us perfect.</p>
+        <p>But it can keep us honest.</p>
+        <p>This Constitution is a living promise—to ourselves, to each other, and to those not yet born. We will not worship it. We will wield it. And when the time comes, we will remake it again.</p>
+      </section>
+
+      <div class="smallprint">
+        Orphaned Charter • Origin Unknown • This print edition generated for public reading, sharing, and preservation.
+      </div>
+
+      <!-- Print-only footer (some browsers ignore it; still harmless) -->
+      <div class="print-footer" aria-hidden="true">
+        <div class="inner">
+          <span>Orphaned Charter — Print Edition</span>
+          <span>Page</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
